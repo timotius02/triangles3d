@@ -1,0 +1,54 @@
+# import test: tetrahedron
+frames 1 50
+
+screen -4 -4 4 4
+pixels 600 600
+vary y-angle 0 360 1 50
+vary x-angle 0 360 1 50
+save origin
+
+# The Tetrahedron
+move 2 3 0
+rotate-y y-angle
+import tetrahedron.3dt 1 1 1 0 0 x-angle 0 0 0
+
+# The Icosahedron
+restore origin
+move 0 3 0
+rotate-y y-angle
+import icosahedron.3dt 0.75 0.75 0.75 0 0 x-angle 0 0 0
+
+# The Octahedron
+restore origin
+move -2 3 0
+rotate-y y-angle
+import octahedron.3dt 1 1 1 0 0 x-angle 0 0 0
+
+# The Cylinder
+restore origin
+move -2.5 0.8 0
+rotate-y y-angle
+import cylinder.3dt 1 1 1 0 0 x-angle 0 0 0
+
+# The Cylinder2
+restore origin
+move -0.5 0.8 0
+rotate-y y-angle
+import cylinder2.3dt 1 1 1 0 0 x-angle 0 0 0
+
+# The Torus with small tube radius
+restore origin
+move 2 0.8 0
+rotate-y y-angle
+import torus_1_4.3dt 1 1 1 0 0 y-angle 0 0 0
+
+# The Torus with large tube radius
+restore origin
+move 0 -2 0
+rotate-y y-angle
+import torus_1_13.3dt 0.9 0.9 0.9 0 0 y-angle 0 0 0 
+
+render-perspective-cyclops 0 0 6
+#display 0.05
+files import-demo
+end
